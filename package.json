@@ -1,5 +1,5 @@
 {
-  "name": "nome-do-projeto",
+  "name": "fake-product",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,7 +12,8 @@
     "axios": "^1.7.7",
     "next": "14.2.9",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "styled-components": "^6.1.13"
   },
   "devDependencies": {
     "eslint": "^8",
