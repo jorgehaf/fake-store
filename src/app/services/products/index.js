@@ -1,8 +1,11 @@
 import client from "../config/client";
 
 let products = {
-    get: (params) => {
+    getProducts: (params) => {
         return client.get("/products", params);
+    },
+    getCategory: (params) => {
+        return client.get("/products/category", params);
     }
 };
 
