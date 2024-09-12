@@ -3,31 +3,53 @@
 import React, { useState, useEffect } from 'react';
 import styles from './pages.styles';
 import services from '../services'
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../store/cartStore';
 
 export default function Home() {
+    const dispatch = useDispatch();
+
     const [products, setProducts] = useState([]);
-    const [searchTerm, setSearchTerm] = useState('');
     const [filteredProducts, setFilteredProducts] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [categories, setCategories] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState('');
 
     useEffect(() => {
         const fetchProducts = async () => {
-            const response = await services.products.get();
+            let response;
+
+            if (selectedCategory) {
+                response = await services.products.getCategory({
+                    type: selectedCategory
+                });
+            } else {
+                response = await services.products.getProducts();
+            }
             setProducts(response.products);
             setFilteredProducts(response.products);
         };
 
-        fetchProducts();
-    }, []);
+        const fetchCategories = async () => {
+            const response = await services.products.getCategory();
+            setCategories(response.categories);
+        };
 
-    useEffect(() => {
-        const filtered = products.filter((product) =>
-            product.title.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-        setFilteredProducts(filtered);
-    }, [searchTerm, products]);
+        fetchProducts();
+        fetchCategories();
+    }, [selectedCategory]);
 
     const handleAddToCart = (product) => {
-        alert(`Produto "${product.title}" adicionado ao carrinho!`);
+        dispatch(addToCart(product));
+    };
+
+    const handleSearch = (e) => {
+        setSearchTerm(e.target.value);
+        const searchValue = e.target.value.toLowerCase();
+        const filtered = products.filter((product) =>
+            product.title.toLowerCase().includes(searchValue)
+        );
+        setFilteredProducts(filtered);
     };
 
     return (
@@ -36,16 +58,24 @@ export default function Home() {
                 type="text"
                 placeholder="Pesquisar produtos..."
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={handleSearch}
             />
+            <styles.FilterContainer>
+                <styles.CategoryFilter onChange={(e) => setSelectedCategory(e.target.value)}>
+                    <option value="">Todas as Categorias</option>
+                    {categories.map((category) => (
+                        <option key={category} value={category}>{category}</option>
+                    ))}
+                </styles.CategoryFilter>
+            </styles.FilterContainer>
             <styles.Grid>
-                {filteredProducts.map((product) => (
+                {Array.isArray(filteredProducts) && filteredProducts.map((product) => (
                     <styles.ProductCard key={product.id}>
                         <styles.ProductImage src={product.image} alt={product.title} />
                         <styles.ProductName>{product.title}</styles.ProductName>
                         <styles.ProductPrice>R$ {product.price.toFixed(2)}</styles.ProductPrice>
                         <styles.ProductDescription>
-                            {product.description}
+                            {product.description.length > 100 ? `${product.description.substring(0, 100)}...` : product.description}
                         </styles.ProductDescription>
                         <styles.AddToCartButton onClick={() => handleAddToCart(product)}>
                             Adicionar ao Carrinho
