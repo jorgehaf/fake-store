@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import styles from './pages.styles';
 import services from '../services'
 import { useDispatch } from 'react-redux';
@@ -71,8 +72,12 @@ export default function Home() {
             <styles.Grid>
                 {Array.isArray(filteredProducts) && filteredProducts.map((product) => (
                     <styles.ProductCard key={product.id}>
-                        <styles.ProductImage src={product.image} alt={product.title} />
-                        <styles.ProductName>{product.title}</styles.ProductName>
+                        <Link href={`/product/${product.id}`} key={product.id} passHref legacyBehavior>
+                            <a>
+                                <styles.ProductImage src={product.image} alt={product.title} />
+                                <styles.ProductName>{product.title}</styles.ProductName>
+                            </a>
+                        </Link>
                         <styles.ProductPrice>R$ {product.price.toFixed(2)}</styles.ProductPrice>
                         <styles.ProductDescription>
                             {product.description.length > 100 ? `${product.description.substring(0, 100)}...` : product.description}
