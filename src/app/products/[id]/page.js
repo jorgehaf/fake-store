@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from './products.styles';
-import services from '@/app/services';
+import services from '@/services';
 
 const ProductDetails = () => {
     const [product, setProduct] = useState(null);
