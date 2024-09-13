@@ -1,17 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { useDispatch } from 'react-redux';
 import styles from './page.styles';
 import services from '@/services';
 
-import { addToCart } from '@/store/cartStore';
 import CartInfo from '@/components/CartInfo'
+import ProductGrid from '@/components/ProductGrid'
 
 export default function Pages() {
-  const dispatch = useDispatch();
-
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -42,10 +38,6 @@ export default function Pages() {
     fetchCategories();
   }, [selectedCategory]);
 
-  const handleAddToCart = (product) => {
-    dispatch(addToCart(product));
-  };
-
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
     const searchValue = e.target.value.toLowerCase();
@@ -74,25 +66,7 @@ export default function Pages() {
           ))}
         </styles.CategoryFilter>
       </styles.FilterContainer>
-      <styles.Grid>
-        {Array.isArray(filteredProducts) && filteredProducts.map((product) => (
-          <styles.ProductCard key={product.id}>
-            <Link href={`/products/${product.id}`} passHref legacyBehavior>
-              <a>
-                <styles.ProductImage src={product.image} alt={product.title} />
-                <styles.ProductName>{product.title}</styles.ProductName>
-              </a>
-            </Link>
-            <styles.ProductPrice>R$ {product.price.toFixed(2)}</styles.ProductPrice>
-            <styles.ProductDescription>
-              {product.description.length > 100 ? `${product.description.substring(0, 100)}...` : product.description}
-            </styles.ProductDescription>
-            <styles.AddToCartButton onClick={() => handleAddToCart(product)}>
-              Adicionar ao Carrinho
-            </styles.AddToCartButton>
-          </styles.ProductCard>
-        ))}
-      </styles.Grid>
+      <ProductGrid filteredProducts={filteredProducts} />
     </styles.Container>
   );
 }
