@@ -1,13 +1,15 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
-import styles from './products.styles';
+import styles from './styles';
 import services from '@/services';
 
 import { addToCart } from '@/store/cartStore';
+import CartInfo from '@/components/CartInfo'
 
-const ProductIndex = ({ params }) => {
+export default function ProductIndex({ params }) {
     const dispatch = useDispatch();
 
     const [product, setProduct] = useState(null);
@@ -32,7 +34,10 @@ const ProductIndex = ({ params }) => {
 
     return (
         <styles.Container>
-            <styles.BackButton onClick={() => router.back()}>Voltar</styles.BackButton> {/* Botão de Voltar */}
+            <styles.ContainerHeader>
+                <styles.BackButton onClick={() => router.back()}>Voltar</styles.BackButton> {/* Botão de Voltar */}
+                <CartInfo />
+            </styles.ContainerHeader>
             <styles.ProductImage src={product.image} alt={product.title} />
             <styles.ProductDetails>
                 <styles.ProductName>{product.title}</styles.ProductName>
@@ -45,5 +50,3 @@ const ProductIndex = ({ params }) => {
         </styles.Container>
     );
 };
-
-export default ProductIndex;

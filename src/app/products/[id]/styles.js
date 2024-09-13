@@ -9,6 +9,14 @@ const Container = styled.div`
   min-height: 100vh;
 `;
 
+const ContainerHeader = styled.div`
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-bottom: 20px;
+`;
+
 const BackButton = styled.button`
   align-self: flex-start;
   background-color: #e0e0e0;
@@ -19,7 +27,6 @@ const BackButton = styled.button`
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 20px;
   transition: background-color 0.3s;
   &:hover {
     background-color: #ccc;
@@ -87,6 +94,7 @@ const AddToCartButton = styled.button`
 
 const styles = {
   Container,
+  ContainerHeader,
   BackButton,
   ProductImage,
   ProductDetails,
