@@ -7,7 +7,7 @@ import services from '@/services';
 import CartInfo from '@/components/CartInfo'
 import ProductGrid from '@/components/ProductGrid'
 
-export default function Pages() {
+export default function Page() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -59,6 +59,7 @@ export default function Pages() {
     <styles.Container>
       <styles.SearchBarContainer>
         <styles.SearchBar
+          id='search-bar'
           type="text"
           placeholder="Pesquisar produtos..."
           value={searchTerm}
