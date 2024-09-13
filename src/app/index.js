@@ -18,20 +18,28 @@ export default function Pages() {
     const fetchProducts = async () => {
       let response;
 
-      if (selectedCategory) {
-        response = await services.products.getCategory({
-          type: selectedCategory
-        });
-      } else {
-        response = await services.products.getProducts();
+      try {
+        if (selectedCategory) {
+          response = await services.products.getCategory({
+            type: selectedCategory
+          });
+        } else {
+          response = await services.products.getProducts();
+        }
+      } catch (error) {
+        alert("Erro na busca pelos produtos. Tente novamente!")
       }
       setProducts(response.products);
       setFilteredProducts(response.products);
     };
 
     const fetchCategories = async () => {
-      const response = await services.products.getCategory();
-      setCategories(response.categories);
+      try {
+        const response = await services.products.getCategory();
+        setCategories(response.categories);
+      } catch (error) {
+        alert("Erro na busca pelas categorias. Tente novamente!")
+      }
     };
 
     fetchProducts();

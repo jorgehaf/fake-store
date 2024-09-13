@@ -17,8 +17,12 @@ export default function ProductIndex({ params }) {
 
     useEffect(() => {
         const fetchProductDetails = async () => {
-            const response = await services.products.getSingleProduct(params.id);
-            setProduct(response.product);
+            try {
+                const response = await services.products.getSingleProduct(params.id);
+                setProduct(response.product);
+            } catch (error) {
+                alert("Erro na busca pelo produto. Tente novamente!")
+            }
         };
 
         fetchProductDetails();
