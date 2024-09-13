@@ -12,7 +12,7 @@ export default function CartInfo() {
     return (
         <styles.CartInfo>
             Carrinho ({cartItems.length})
-            <styles.CartTotal>R$ {cartTotal}</styles.CartTotal>
+            <styles.CartTotal>R$ {cartTotal.toFixed(2)}</styles.CartTotal>
         </styles.CartInfo>
     )
 }

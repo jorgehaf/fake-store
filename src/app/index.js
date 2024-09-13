@@ -1,18 +1,18 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import styles from './page.styles';
-import services from '@/services';
+import React, { useState, useEffect } from "react";
+import styles from "./page.styles";
+import services from "@/services";
 
-import CartInfo from '@/components/CartInfo'
-import ProductGrid from '@/components/ProductGrid'
+import CartInfo from "@/components/CartInfo";
+import ProductGrid from "@/components/ProductGrid";
 
 export default function Page() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -21,13 +21,13 @@ export default function Page() {
       try {
         if (selectedCategory) {
           response = await services.products.getCategory({
-            type: selectedCategory
+            type: selectedCategory,
           });
         } else {
           response = await services.products.getProducts();
         }
       } catch (error) {
-        alert("Erro na busca pelos produtos. Tente novamente!")
+        alert("Erro na busca pelos produtos. Tente novamente!");
       }
       setProducts(response.products);
       setFilteredProducts(response.products);
@@ -38,7 +38,7 @@ export default function Page() {
         const response = await services.products.getCategory();
         setCategories(response.categories);
       } catch (error) {
-        alert("Erro na busca pelas categorias. Tente novamente!")
+        alert("Erro na busca pelas categorias. Tente novamente!");
       }
     };
 
@@ -56,26 +56,31 @@ export default function Page() {
   };
 
   return (
-    <styles.Container>
-      <styles.SearchBarContainer>
-        <styles.SearchBar
-          id='search-bar'
-          type="text"
-          placeholder="Pesquisar produtos..."
-          value={searchTerm}
-          onChange={handleSearch}
-        />
+    <>
+      <styles.Header>
+        <styles.Logo>Fake Store</styles.Logo>
+        <styles.SearchBarContainer>
+          <styles.SearchBar
+            id="search-bar"
+            type="text"
+            placeholder="Pesquisar produtos..."
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+          <styles.CategoryFilter
+            onChange={(e) => setSelectedCategory(e.target.value)}
+          >
+            <option value="">Todas as Categorias</option>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </styles.CategoryFilter>
+        </styles.SearchBarContainer>
         <CartInfo />
-      </styles.SearchBarContainer>
-      <styles.FilterContainer>
-        <styles.CategoryFilter onChange={(e) => setSelectedCategory(e.target.value)}>
-          <option value="">Todas as Categorias</option>
-          {categories.map((category) => (
-            <option key={category} value={category}>{category}</option>
-          ))}
-        </styles.CategoryFilter>
-      </styles.FilterContainer>
+      </styles.Header>
       <ProductGrid filteredProducts={filteredProducts} />
-    </styles.Container>
+    </>
   );
 }
