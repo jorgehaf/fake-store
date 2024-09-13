@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page Component Should render Pages and other components 1`] = `[Function]`;
+
+exports[`Page Component Should render Pages and other components 2`] = `[Function]`;
+
+exports[`Page Component Should render Pages and other components 3`] = `[Function]`;
+
+exports[`Page Component deve alterar a lista de produtos com base na categoria selecionada 1`] = `[Function]`;
