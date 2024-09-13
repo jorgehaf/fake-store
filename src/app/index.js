@@ -2,17 +2,15 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styles from './page.styles';
 import services from '@/services';
 
 import { addToCart } from '@/store/cartStore';
-import { getCartItems, getCartTotal } from '@/store/cartStore';
+import CartInfo from '@/components/CartInfo'
 
 export default function Pages() {
   const dispatch = useDispatch();
-  const cartItems = useSelector(getCartItems);
-  const cartTotal = useSelector(getCartTotal);
 
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -66,10 +64,7 @@ export default function Pages() {
           value={searchTerm}
           onChange={handleSearch}
         />
-        <styles.CartInfo>
-          Carrinho ({cartItems.length})
-          <styles.CartTotal>R$ {cartTotal}</styles.CartTotal>
-        </styles.CartInfo>
+        <CartInfo />
       </styles.SearchBarContainer>
       <styles.FilterContainer>
         <styles.CategoryFilter onChange={(e) => setSelectedCategory(e.target.value)}>
