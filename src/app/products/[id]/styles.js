@@ -10,15 +10,15 @@ const Container = styled.div`
 `;
 
 const ContainerHeader = styled.div`
-  margin: 0;
+  width: 100%;
   display: flex;
-  justify-content: center;
-  gap: 80px;
+  justify-content: space-between; /* Alinha os itens nos cantos opostos */
+  align-items: center; /* Alinha os itens verticalmente no centro */
   margin-bottom: 20px;
+  padding: 0 20px; /* Adiciona padding horizontal para espaçamento */
 `;
 
 const BackButton = styled.button`
-  align-self: flex-start;
   background-color: #e0e0e0;
   color: #333;
   border: none;
