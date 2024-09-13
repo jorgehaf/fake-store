@@ -2,14 +2,17 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './page.styles';
 import services from '@/services';
 
 import { addToCart } from '@/store/cartStore';
+import { getCartItems, getCartTotal } from '@/store/cartStore';
 
 export default function Pages() {
   const dispatch = useDispatch();
+  const cartItems = useSelector(getCartItems);
+  const cartTotal = useSelector(getCartTotal);
 
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -56,12 +59,18 @@ export default function Pages() {
 
   return (
     <styles.Container>
-      <styles.SearchBar
-        type="text"
-        placeholder="Pesquisar produtos..."
-        value={searchTerm}
-        onChange={handleSearch}
-      />
+      <styles.SearchBarContainer>
+        <styles.SearchBar
+          type="text"
+          placeholder="Pesquisar produtos..."
+          value={searchTerm}
+          onChange={handleSearch}
+        />
+        <styles.CartInfo>
+          Carrinho ({cartItems.length})
+          <styles.CartTotal>R$ {cartTotal}</styles.CartTotal>
+        </styles.CartInfo>
+      </styles.SearchBarContainer>
       <styles.FilterContainer>
         <styles.CategoryFilter onChange={(e) => setSelectedCategory(e.target.value)}>
           <option value="">Todas as Categorias</option>
@@ -73,7 +82,7 @@ export default function Pages() {
       <styles.Grid>
         {Array.isArray(filteredProducts) && filteredProducts.map((product) => (
           <styles.ProductCard key={product.id}>
-            <Link href={`/products/${product.id}`} key={product.id} passHref legacyBehavior>
+            <Link href={`/products/${product.id}`} passHref legacyBehavior>
               <a>
                 <styles.ProductImage src={product.image} alt={product.title} />
                 <styles.ProductName>{product.title}</styles.ProductName>

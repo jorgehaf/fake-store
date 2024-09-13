@@ -4,12 +4,34 @@ export const Container = styled.div`
   padding: 20px;
 `;
 
+export const SearchBarContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+`;
+
 export const SearchBar = styled.input`
   width: 100%;
   padding: 10px;
-  margin-bottom: 20px;
+  margin-right: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  flex: 1;
+`;
+
+export const CartInfo = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+`;
+
+export const CartTotal = styled.span`
+  font-weight: bold;
+  margin-left: 5px;
 `;
 
 export const FilterContainer = styled.div`
@@ -88,6 +110,7 @@ export const AddToCartButton = styled.button`
 
 const styles = {
   Container,
+  SearchBarContainer,
   SearchBar,
   FilterContainer,
   CategoryFilter,
@@ -98,6 +121,8 @@ const styles = {
   ProductPrice,
   ProductDescription,
   AddToCartButton,
+  CartInfo,
+  CartTotal,
 };
 
 export default styles;
