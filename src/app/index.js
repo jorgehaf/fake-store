@@ -60,13 +60,6 @@ export default function Page() {
       <styles.Header>
         <styles.Logo>Fake Store</styles.Logo>
         <styles.SearchBarContainer>
-          <styles.SearchBar
-            id="search-bar"
-            type="text"
-            placeholder="Pesquisar produtos..."
-            value={searchTerm}
-            onChange={handleSearch}
-          />
           <styles.CategoryFilter
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
@@ -77,6 +70,13 @@ export default function Page() {
               </option>
             ))}
           </styles.CategoryFilter>
+          <styles.SearchBar
+            id="search-bar"
+            type="text"
+            placeholder="Pesquisar produtos..."
+            value={searchTerm}
+            onChange={handleSearch}
+          />
         </styles.SearchBarContainer>
         <CartInfo />
       </styles.Header>
