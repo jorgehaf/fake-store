@@ -21,16 +21,18 @@ export default function ProductGrid({ filteredProducts }) {
                     <Link href={`/products/${product.id}`} passHref legacyBehavior>
                         <a>
                             <styles.ProductImage src={product.image} alt={product.title} />
-                            <styles.ProductName>{product.title}</styles.ProductName>
+                            <styles.ProductName>{product.title.length > 50 ? `${product.title.substring(0, 100)}...` : product.title}</styles.ProductName>
                         </a>
                     </Link>
-                    <styles.ProductPrice>R$ {product.price.toFixed(2)}</styles.ProductPrice>
-                    <styles.ProductDescription>
-                        {product.description.length > 100 ? `${product.description.substring(0, 100)}...` : product.description}
-                    </styles.ProductDescription>
-                    <styles.AddToCartButton onClick={() => handleAddToCart(product)}>
-                        Adicionar ao Carrinho
-                    </styles.AddToCartButton>
+                    <styles.CardInfoContainer>
+                        <styles.ProductPrice>R$ {product.price.toFixed(2)}</styles.ProductPrice>
+                        <styles.ProductDescription>
+                            {product.description.length > 100 ? `${product.description.substring(0, 100)}...` : product.description}
+                        </styles.ProductDescription>
+                        <styles.AddToCartButton onClick={() => handleAddToCart(product)}>
+                            Adicionar ao Carrinho
+                        </styles.AddToCartButton>
+                    </styles.CardInfoContainer>
                 </styles.ProductCard>
             ))}
         </styles.Grid>

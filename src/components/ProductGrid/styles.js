@@ -32,6 +32,13 @@ export const ProductImage = styled.img`
 export const ProductName = styled.h3`
   font-size: 16px;
   margin: 10px 0;
+  -webkit-line-clamp: 2;
+`;
+
+export const CardInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `;
 
 export const ProductPrice = styled.p`
@@ -68,6 +75,7 @@ const styles = {
   ProductCard,
   ProductImage,
   ProductName,
+  CardInfoContainer,
   ProductPrice,
   ProductDescription,
   AddToCartButton,
