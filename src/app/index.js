@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 import styles from './page.styles';
-import services from '@/services'
+import services from '@/services';
 
 import { addToCart } from '@/store/cartStore';
 
