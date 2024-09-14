@@ -61,7 +61,7 @@ export const ProductDescription = styled.p`
 `;
 
 export const AddToCartButton = styled.button`
-  background-color: #0070f3;
+  background-color: #444;
   color: white;
   border: none;
   padding: 10px;
@@ -70,7 +70,7 @@ export const AddToCartButton = styled.button`
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: #005bb5;
+    background-color: #222;
   }
 `;
 
