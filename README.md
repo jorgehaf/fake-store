@@ -8,7 +8,7 @@
 <h3>Instale as dependências</h3>
 $ npm install
 
-<h3>Compile e habilite a recarga automática para desenvolvimento, logo a aplicação estará disponível em "http://localhost:8080/"</h3>
+<h3>Compile e habilite a recarga automática para desenvolvimento, logo a aplicação estará disponível em "http://localhost:3000"</h3>
 $ npm run dev
 
 <h3>Para rodar os testes unitários execute o seguinte comando</h3>
@@ -18,5 +18,5 @@ $ npm run test
 <p>As seguintes ferramentas foram usadas na construção do projeto:</p>
 <br>
 
-- [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts)
+- [`next`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts)](https://nextjs.org/docs)
 <br>
