@@ -45,7 +45,7 @@ describe('Page Component', () => {
         expect(ProductGrid).toMatchSnapshot();
     });
 
-    it('deve alterar a lista de produtos com base na categoria selecionada', async () => {
+    it('Should change the product list based on the selected category', async () => {
         render(
             <Provider store={store}>
                 <Page />
