@@ -18,5 +18,5 @@ $ npm run test
 <p>As seguintes ferramentas foram usadas na construção do projeto:</p>
 <br>
 
-- [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts)
+- [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts)](https://nextjs.org/docs)
 <br>
