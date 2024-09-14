@@ -78,7 +78,7 @@ const ProductCategory = styled.p`
 `;
 
 const AddToCartButton = styled.button`
-  background-color: #0070f3;
+  background-color: #444;
   color: white;
   border: none;
   padding: 12px 20px;
@@ -88,7 +88,7 @@ const AddToCartButton = styled.button`
   cursor: pointer;
   transition: background-color 0.3s;
   &:hover {
-    background-color: #005bb5;
+    background-color: #222;
   }
 `;
 
