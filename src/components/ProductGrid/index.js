@@ -1,18 +1,12 @@
 "use client";
 
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import Link from 'next/link';
 
 import styles from './styles';
-import { addToCart } from '@/store/cartStore';
+import AddCartButton from '@/components/AddCartButton'
 
 export default function ProductGrid({ filteredProducts }) {
-    const dispatch = useDispatch();
-
-    const handleAddToCart = (product) => {
-        dispatch(addToCart(product));
-    };
 
     return (
         <styles.Grid>
@@ -29,9 +23,7 @@ export default function ProductGrid({ filteredProducts }) {
                         <styles.ProductDescription>
                             {product.description.length > 100 ? `${product.description.substring(0, 100)}...` : product.description}
                         </styles.ProductDescription>
-                        <styles.AddToCartButton onClick={() => handleAddToCart(product)}>
-                            Adicionar ao Carrinho
-                        </styles.AddToCartButton>
+                        <AddCartButton product={product} />
                     </styles.CardInfoContainer>
                 </styles.ProductCard>
             ))}

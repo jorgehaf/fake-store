@@ -1,16 +1,14 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import styles from './styles';
 import services from '@/services';
 
-import { addToCart } from '@/store/cartStore';
-import CartInfo from '@/components/CartInfo'
+import CartInfo from '@/components/CartInfo';
+import AddCartButton from '@/components/AddCartButton';
 
 export default function ProductIndex({ params }) {
-    const dispatch = useDispatch();
     const [product, setProduct] = useState(null);
     const router = useRouter();
 
@@ -27,10 +25,6 @@ export default function ProductIndex({ params }) {
         fetchProductDetails();
     }, [params]);
 
-    const handleAddToCart = (product) => {
-        dispatch(addToCart(product));
-    };
-
     if (!product) {
         return <div>Carregando...</div>;
     }
@@ -38,7 +32,7 @@ export default function ProductIndex({ params }) {
     return (
         <styles.Container>
             <styles.ContainerHeader>
-                <styles.BackButton onClick={() => router.back()}>Voltar</styles.BackButton> 
+                <styles.BackButton onClick={() => router.back()}>Voltar</styles.BackButton>
                 <CartInfo />
             </styles.ContainerHeader>
 
@@ -53,9 +47,7 @@ export default function ProductIndex({ params }) {
 
                 <styles.ProductPurchase>
                     <styles.ProductPrice>R$ {product.price.toFixed(2)}</styles.ProductPrice>
-                    <styles.AddToCartButton onClick={() => handleAddToCart(product)}>
-                        Adicionar ao Carrinho
-                    </styles.AddToCartButton>
+                    <AddCartButton product={product} />
                 </styles.ProductPurchase>
             </styles.ProductGrid>
         </styles.Container>
