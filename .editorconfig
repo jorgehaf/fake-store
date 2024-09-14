@@ -1,0 +1,24 @@
+# EditorConfig é uma ferramenta que ajuda a manter estilos de codificação consistentes entre diferentes editores e IDEs.
+
+# Raiz do projeto. Define que este é o arquivo de configuração raiz.
+root = true
+
+# Configurações para todos os arquivos
+[*]
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+indent_size = 2
+indent_style = space
+
+# Configurações específicas para arquivos JavaScript
+[*.js]
+indent_size = 2
+
+# Configurações específicas para arquivos de estilo
+[*.scss]
+indent_size = 2
+
+# Configurações específicas para arquivos HTML
+[*.html]
+indent_size = 2
