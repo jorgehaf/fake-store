@@ -19,6 +19,7 @@ const ContainerHeader = styled.div`
 `;
 
 const BackButton = styled.button`
+  width: 100px;
   background-color: #e0e0e0;
   color: #333;
   border: none;
@@ -28,6 +29,7 @@ const BackButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+
   &:hover {
     background-color: #ccc;
   }
