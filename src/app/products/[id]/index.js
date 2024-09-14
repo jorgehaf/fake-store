@@ -11,7 +11,6 @@ import CartInfo from '@/components/CartInfo'
 
 export default function ProductIndex({ params }) {
     const dispatch = useDispatch();
-
     const [product, setProduct] = useState(null);
     const router = useRouter();
 
@@ -21,7 +20,7 @@ export default function ProductIndex({ params }) {
                 const response = await services.products.getSingleProduct(params.id);
                 setProduct(response.product);
             } catch (error) {
-                alert("Erro na busca pelo produto. Tente novamente!")
+                alert("Erro na busca pelo produto. Tente novamente!");
             }
         };
 
@@ -39,18 +38,26 @@ export default function ProductIndex({ params }) {
     return (
         <styles.Container>
             <styles.ContainerHeader>
-                <styles.BackButton onClick={() => router.back()}>Voltar</styles.BackButton> {/* Botão de Voltar */}
+                <styles.BackButton onClick={() => router.back()}>Voltar</styles.BackButton> 
                 <CartInfo />
             </styles.ContainerHeader>
-            <styles.ProductImage src={product.image} alt={product.title} />
-            <styles.ProductDetails>
-                <styles.ProductName>{product.title}</styles.ProductName>
-                <styles.ProductPrice>R$ {product.price.toFixed(2)}</styles.ProductPrice>
-                <styles.ProductDescription>{product.description}</styles.ProductDescription>
-                <styles.ProductCategory>Categoria: {product.category}</styles.ProductCategory>
-                <styles.AddToCartButton onClick={() => handleAddToCart(product)}>
-                    Adicionar ao Carrinho</styles.AddToCartButton>
-            </styles.ProductDetails>
+
+            <styles.ProductGrid>
+                <styles.ProductImage src={product.image} alt={product.title} />
+
+                <styles.ProductInfo>
+                    <styles.ProductName>{product.title}</styles.ProductName>
+                    <styles.ProductCategory>Categoria: {product.category}</styles.ProductCategory>
+                    <styles.ProductDescription>{product.description}</styles.ProductDescription>
+                </styles.ProductInfo>
+
+                <styles.ProductPurchase>
+                    <styles.ProductPrice>R$ {product.price.toFixed(2)}</styles.ProductPrice>
+                    <styles.AddToCartButton onClick={() => handleAddToCart(product)}>
+                        Adicionar ao Carrinho
+                    </styles.AddToCartButton>
+                </styles.ProductPurchase>
+            </styles.ProductGrid>
         </styles.Container>
     );
-};
+}

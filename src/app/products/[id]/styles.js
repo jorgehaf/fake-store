@@ -12,10 +12,10 @@ const Container = styled.div`
 const ContainerHeader = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between; /* Alinha os itens nos cantos opostos */
-  align-items: center; /* Alinha os itens verticalmente no centro */
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
-  padding: 0 20px; /* Adiciona padding horizontal para espaçamento */
+  padding: 0 20px;
 `;
 
 const BackButton = styled.button`
@@ -33,35 +33,49 @@ const BackButton = styled.button`
   }
 `;
 
+const ProductGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+`;
+
 const ProductImage = styled.img`
-  width: 350px;
+  width: 100%;
+  max-width: 400px;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  margin: 0 auto;
 `;
 
-const ProductDetails = styled.div`
-  max-width: 700px;
-  background: white;
+const ProductInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  text-align: left;
 `;
 
 const ProductName = styled.h1`
   font-size: 28px;
   font-weight: bold;
   color: #333;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 `;
 
-const ProductPrice = styled.p`
-  font-size: 22px;
-  font-weight: bold;
-  color: #27ae60;
-  margin-bottom: 10px;
+const ProductCategory = styled.p`
+  font-style: italic;
+  color: #888;
+  margin-bottom: 15px;
 `;
 
 const ProductDescription = styled.p`
@@ -71,10 +85,22 @@ const ProductDescription = styled.p`
   margin-bottom: 20px;
 `;
 
-const ProductCategory = styled.p`
-  font-style: italic;
-  color: #888;
-  margin-bottom: 15px;
+const ProductPurchase = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  @media (max-width: 768px) {
+    align-items: center;
+  }
+`;
+
+const ProductPrice = styled.p`
+  font-size: 24px;
+  font-weight: bold;
+  color: #27ae60;
+  margin-bottom: 20px;
 `;
 
 const AddToCartButton = styled.button`
@@ -96,12 +122,14 @@ const styles = {
   Container,
   ContainerHeader,
   BackButton,
+  ProductGrid,
   ProductImage,
-  ProductDetails,
+  ProductInfo,
   ProductName,
-  ProductPrice,
-  ProductDescription,
   ProductCategory,
+  ProductDescription,
+  ProductPurchase,
+  ProductPrice,
   AddToCartButton,
 };
 

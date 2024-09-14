@@ -57,21 +57,22 @@ export const ProductPrice = styled.p`
 export const ProductDescription = styled.p`
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* Limita a descrição a duas linhas */
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   margin: 10px 0;
 `;
 
-export const AddToCartButton = styled.button`
+const AddToCartButton = styled.button`
   background-color: #444;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.2s;
-
+  transition: background-color 0.3s;
   &:hover {
     background-color: #222;
   }
