@@ -27,12 +27,16 @@ export const ProductImage = styled.img`
   height: 150px;
   object-fit: contain;
   margin-bottom: 10px;
+  cursor: pointer;
 `;
 
 export const ProductName = styled.h3`
   font-size: 16px;
   margin: 10px 0;
   -webkit-line-clamp: 2;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
 `;
 
 export const CardInfoContainer = styled.div`
