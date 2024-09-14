@@ -4,9 +4,11 @@ import React from 'react';
 import Link from 'next/link';
 
 import styles from './styles';
-import AddCartButton from '@/components/AddCartButton'
+import AddCartButton from '@/components/AddCartButton';
+import LoadingLayer from '@/components/LoadingLayer';
 
 export default function ProductGrid({ filteredProducts }) {
+    if (!filteredProducts) return <LoadingLayer />
 
     return (
         <styles.Grid>
