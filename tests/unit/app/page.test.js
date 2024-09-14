@@ -8,7 +8,7 @@ import CartInfo from '@/components/CartInfo';
 import ProductGrid from '@/components/ProductGrid';
 
 
-jest.mock('../../src/services', () => ({
+jest.mock('../../../src/services', () => ({
     products: {
         getProducts: jest.fn(),
         getCategory: jest.fn(),
