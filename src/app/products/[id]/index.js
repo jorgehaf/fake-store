@@ -7,6 +7,7 @@ import services from '@/services';
 
 import CartInfo from '@/components/CartInfo';
 import AddCartButton from '@/components/AddCartButton';
+import LoadingLayer from '@/components/LoadingLayer';
 
 export default function ProductIndex({ params }) {
     const [product, setProduct] = useState(null);
@@ -26,7 +27,7 @@ export default function ProductIndex({ params }) {
     }, [params]);
 
     if (!product) {
-        return <div>Carregando...</div>;
+        return <LoadingLayer />;
     }
 
     return (
