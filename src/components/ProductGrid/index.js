@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 
 import styles from './styles';
@@ -8,6 +8,7 @@ import AddCartButton from '@/components/AddCartButton';
 import LoadingLayer from '@/components/LoadingLayer';
 
 export default function ProductGrid({ filteredProducts }) {
+    const [loadingImage, setLoadingImage] = useState(true);
     if (!filteredProducts) return <LoadingLayer />
 
     return (
@@ -16,7 +17,15 @@ export default function ProductGrid({ filteredProducts }) {
                 <styles.ProductCard key={product.id}>
                     <Link href={`/products/${product.id}`} passHref legacyBehavior>
                         <div>
-                            <styles.ProductImage src={product.image} alt={product.title} />
+                            <div style={{ position: 'relative' }}>
+                                {loadingImage && <LoadingLayer params={{ height: '120px' }} />}
+                                <styles.ProductImage
+                                    src={product.image}
+                                    alt={product.title}
+                                    onLoad={() => setLoadingImage(false)}
+                                    style={{ display: loadingImage ? 'none' : 'block' }}
+                                />
+                            </div>
                             <styles.ProductName>{product.title.length > 50 ? `${product.title.substring(0, 100)}...` : product.title}</styles.ProductName>
                         </div>
                     </Link>

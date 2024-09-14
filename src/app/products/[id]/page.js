@@ -27,7 +27,7 @@ export default function ProductDetails({ params }) {
     }, [params]);
 
     if (!product) {
-        return <LoadingLayer />;
+        return <LoadingLayer params={{ height: '100vh' }}/>;
     }
 
     return (
