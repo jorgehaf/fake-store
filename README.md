@@ -8,7 +8,7 @@
 <h3>Instale as dependências</h3>
 $ npm install
 
-<h3>Compile e habilite a recarga automática para desenvolvimento, logo a aplicação estará disponível em "localhost:3000"</h3>
+<h3>Compile e habilite a recarga automática para desenvolvimento, logo a aplicação estará disponível em "[localhost:3000](http://localhost:3000/products/2)"</h3>
 $ npm run dev
 
 <h3>Para rodar os testes unitários execute o seguinte comando</h3>
