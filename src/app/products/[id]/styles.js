@@ -75,7 +75,6 @@ const ProductName = styled.h1`
 `;
 
 const ProductCategory = styled.p`
-  font-style: italic;
   color: #888;
   margin-bottom: 15px;
 `;

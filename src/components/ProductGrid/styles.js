@@ -59,7 +59,6 @@ export const ProductDescription = styled.p`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
   margin: 10px 0;
 `;
 
